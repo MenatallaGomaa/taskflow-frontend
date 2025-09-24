@@ -1,16 +1,65 @@
-<div class="task-list-container">
+<div class="task-container">
   <h2>My Tasks</h2>
 
+  <!-- Create Task Form -->
+  <form (ngSubmit)="addTask()" class="task-form">
+    <input
+      type="text"
+      [(ngModel)]="newTask.title"
+      name="title"
+      placeholder="Task title"
+      required
+    />
+    <input
+      type="text"
+      [(ngModel)]="newTask.description"
+      name="description"
+      placeholder="Task description"
+    />
+    <button type="submit">Add Task</button>
+  </form>
+
+  <!-- Task List -->
   <ul *ngIf="tasks.length > 0; else noTasks">
     <li *ngFor="let task of tasks">
-      <span class="title">{{ task.title }}</span> – 
-      <span class="description">{{ task.description }}</span>
-      <span class="status" [class.completed]="task.completed">
-        {{ task.completed ? '✅ Done' : '⏳ Pending' }}
-      </span>
+      <!-- Normal View -->
+      <div *ngIf="!editingTask || editingTask.id !== task.id">
+        <span [class.completed]="task.completed">
+          <strong>{{ task.title }}</strong> - {{ task.description }}
+        </span>
+        <button (click)="editTask(task)">Edit</button>
+        <button (click)="deleteTask(task.id)">Delete</button>
+      </div>
+
+      <!-- Edit Mode -->
+      <div *ngIf="editingTask && editingTask.id === task.id" class="edit-form">
+        <input
+          type="text"
+          [(ngModel)]="editingTask.title"
+          name="editTitle"
+          placeholder="Edit title"
+        />
+        <input
+          type="text"
+          [(ngModel)]="editingTask.description"
+          name="editDescription"
+          placeholder="Edit description"
+        />
+        <label>
+          <input
+            type="checkbox"
+            [(ngModel)]="editingTask.completed"
+            name="editCompleted"
+          />
+          Completed
+        </label>
+        <button (click)="updateTask()">Save</button>
+        <button (click)="editingTask = null">Cancel</button>
+      </div>
     </li>
   </ul>
 
+  <!-- No Tasks Template -->
   <ng-template #noTasks>
     <p>No tasks found.</p>
   </ng-template>

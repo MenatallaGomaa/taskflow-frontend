@@ -1,53 +1,27 @@
-.task-list-container {
-  max-width: 600px;
-  margin: 2rem auto;
+.task-container {
+  max-width: 500px;
+  margin: 20px auto;
   padding: 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #fafafa;
-  font-family: Arial, sans-serif;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #333;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  padding: 0.5rem;
-  border-bottom: 1px solid #eee;
+.task-form {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
 }
 
-li:last-child {
-  border-bottom: none;
+.task-form input {
+  flex: 1;
+  padding: 6px;
 }
 
-.title {
-  font-weight: bold;
+.completed {
+  text-decoration: line-through;
+  color: gray;
 }
 
-.description {
-  margin-left: 0.5rem;
-  color: #666;
-}
-
-.status {
-  margin-left: auto;
-  font-size: 0.9rem;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-}
-
-.status.completed {
-  background-color: #d4edda;
-  color: #155724;
+button {
+  margin-left: 6px;
 }
