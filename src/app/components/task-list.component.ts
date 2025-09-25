@@ -6,7 +6,7 @@ import { TaskService, Task } from '../services/task.service';
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, FormsModule], // ✅ allow *ngFor, *ngIf, ngModel
+  imports: [CommonModule, FormsModule],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css'],
 })
@@ -30,36 +30,39 @@ export class TaskListComponent implements OnInit {
   }
 
   // 🔹 Add a new task
-  addTask(): void {
-    if (!this.newTask.title.trim()) return;
+addTask(): void {
+  if (!this.newTask.title.trim()) return;
 
-    this.taskService.createTask(this.newTask).subscribe({
-      next: (task) => {
-        this.tasks.push(task);
-        this.newTask = { id: 0, title: '', description: '', completed: false }; // reset form
-      },
-      error: (err) => console.error('Error creating task:', err),
-    });
-  }
+  this.taskService.createTask(this.newTask).subscribe({
+    next: (task) => {
+      this.tasks.push(task);
+      this.newTask = { title: '', description: '', completed: false } as Task; 
+    },
+    error: (err) => console.error('Error creating task:', err),
+  });
+}
 
   // 🔹 Enter edit mode
   editTask(task: Task): void {
     this.editingTask = { ...task }; // copy task
   }
 
-  // 🔹 Update a task
-  updateTask(): void {
-    if (!this.editingTask) return;
-
-    this.taskService.updateTask(this.editingTask.id, this.editingTask).subscribe({
-      next: (updatedTask) => {
-        const index = this.tasks.findIndex((t) => t.id === updatedTask.id);
-        if (index !== -1) this.tasks[index] = updatedTask;
-        this.editingTask = null;
-      },
-      error: (err) => console.error('Error updating task:', err),
-    });
+// Update a task
+updateTask(): void {
+  if (!this.editingTask || !this.editingTask.id) {
+    console.error('Task ID is missing, cannot update.');
+    return;
   }
+
+  this.taskService.updateTask(this.editingTask.id, this.editingTask).subscribe({
+    next: (updatedTask) => {
+      const index = this.tasks.findIndex((t) => t.id === updatedTask.id);
+      if (index !== -1) this.tasks[index] = updatedTask;
+      this.editingTask = null;
+    },
+    error: (err) => console.error('Error updating task:', err),
+  });
+}
 
   // 🔹 Delete a task
   deleteTask(id: number): void {
