@@ -21,14 +21,16 @@
 
   <!-- Task List -->
   <ul *ngIf="tasks.length > 0; else noTasks">
-    <li *ngFor="let task of tasks">
+    <li *ngFor="let task of tasks" class="task-item">
       <!-- Normal View -->
-      <div *ngIf="!editingTask || editingTask.id !== task.id">
+      <div *ngIf="!editingTask || editingTask.id !== task.id" class="task-row">
         <span [class.completed]="task.completed">
           <strong>{{ task.title }}</strong> - {{ task.description }}
         </span>
-        <button (click)="editTask(task)">Edit</button>
-        <button (click)="deleteTask(task.id)">Delete</button>
+        <div class="task-actions">
+          <button (click)="editTask(task)" class="btn-edit">Edit</button>
+          <button (click)="deleteTask(task.id)" class="btn-delete">Delete</button>
+        </div>
       </div>
 
       <!-- Edit Mode -->
@@ -53,8 +55,10 @@
           />
           Completed
         </label>
-        <button (click)="updateTask()">Save</button>
-        <button (click)="editingTask = null">Cancel</button>
+        <div class="edit-actions">
+          <button (click)="updateTask()" class="btn-save">Save</button>
+          <button (click)="editingTask = null" class="btn-cancel">Cancel</button>
+        </div>
       </div>
     </li>
   </ul>

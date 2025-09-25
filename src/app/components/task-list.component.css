@@ -1,27 +1,135 @@
 .task-container {
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Form */
 .task-form {
   display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .task-form input {
   flex: 1;
-  padding: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
 }
 
+.task-form button {
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.task-form button:hover {
+  background: #218838;
+}
+
+/* Task list */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-item {
+  background: #f8f9fa;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+/* Normal row */
+.task-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Edit form */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* Buttons */
+button {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.btn-edit {
+  background: #ffc107;
+  color: #000;
+}
+
+.btn-edit:hover {
+  background: #e0a800;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+}
+
+.btn-save {
+  background: #007bff;
+  color: white;
+}
+
+.btn-save:hover {
+  background: #0056b3;
+}
+
+.btn-cancel {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background: #5a6268;
+}
+
+/* Completed tasks */
 .completed {
   text-decoration: line-through;
   color: gray;
-}
-
-button {
-  margin-left: 6px;
 }
