@@ -133,3 +133,32 @@ button {
   text-decoration: line-through;
   color: gray;
 }
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  .task-form {
+    flex-direction: column;
+  }
+
+  .task-form button {
+    width: 100%; /* button full width on small screens */
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li > div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  li button {
+    width: 100%; /* buttons full width for touch-friendly */
+  }
+}
