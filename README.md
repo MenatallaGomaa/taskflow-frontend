@@ -22,5 +22,3 @@ The project is built with **Angular (frontend)** and **Java Spring Boot (backend
 - Clean and responsive UI
 
 ---
-
-## 📂 Project Structure

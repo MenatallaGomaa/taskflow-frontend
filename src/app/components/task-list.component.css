@@ -58,7 +58,6 @@ ul {
   border: 1px solid #eee;
 }
 
-/* Normal row */
 .task-row {
   display: flex;
   justify-content: space-between;
@@ -134,7 +133,7 @@ button {
   color: gray;
 }
 
-/* Responsive tweaks */
+/* Responsive */
 @media (max-width: 480px) {
   h2 {
     font-size: 1.4rem;
@@ -145,7 +144,7 @@ button {
   }
 
   .task-form button {
-    width: 100%; /* button full width on small screens */
+    width: 100%;
   }
 
   li {
@@ -159,6 +158,6 @@ button {
   }
 
   li button {
-    width: 100%; /* buttons full width for touch-friendly */
+    width: 100%;
   }
 }
