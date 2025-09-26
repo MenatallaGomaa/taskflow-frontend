@@ -22,3 +22,13 @@ The project is built with **Angular (frontend)** and **Java Spring Boot (backend
 - Clean and responsive UI
 
 ---
+
+## 🚀 Installation & Setup
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/your-username/taskflow-frontend.git
+   cd taskflow-frontend
+   npm install
+   ng serve
+   ```
